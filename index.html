@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>Merry Christmas!</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link rel="icon" href="tree.png">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+        
+        <style type="text/css">
+
+            @keyframes spin {
+
+                from {}
+                to   { transform: rotate(360deg); }
+
+            }
+
+            @keyframes fall {
+
+                from { top: -25px; }
+                to   { top: 1300px; }
+
+            }
+            
+            body {
+
+                background: #212529;
+                
+                padding: 0px;
+                margin: 0px;
+
+                width: 100vw;
+                height: 100vh;
+
+                overflow: hidden;
+
+                display: flex;
+                flex-direction: row-reverse;
+
+                font-family: 'Cabin', sans-serif;
+
+            }
+
+            .ground-container {
+
+                width: 100%;
+                height: 60px;
+
+                align-self: flex-end;
+
+            }
+
+            .ground {
+
+                width: 100%;
+                height: 50px;
+                
+                margin-top: 20px;
+
+                background: white;
+
+                z-index: 1;
+
+                position: absolute;
+
+            }
+
+            .ground::before {
+                
+                content: "";
+                display: block;
+                
+                border-radius: 100%;
+                
+                width: 100%;
+                height: 300px;  
+                
+                background-color: white;
+                
+                position: relative;
+                right: 25%;
+                top: -40px;
+
+                z-index: 1;
+            
+            }
+
+            .ground::after {
+                
+                content: "";
+                display: block;
+                
+                border-radius: 100%;
+                
+                width: 100%;
+                height: 300px;
+                
+                background-color: #212529;
+                
+                position: relative;
+                left: 43%;
+                top: -560px;
+
+                z-index: 2;
+            
+            }
+
+            .moon {
+
+                width: 128px;
+                height: 128px;
+                
+                align-self: flex-start;
+
+                margin: 50px 0px 0px 50px;
+
+                z-index: 10;
+
+                animation-name: spin;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+
+            }
+
+            .face {
+
+                z-index: 15;
+                width: 200px;
+                height: 280px;
+
+                align-self: center;
+
+                margin-top: 700px;
+
+            }
+
+            .snow {
+
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                position: absolute;
+                z-index: 0;
+                top: -25px;
+                /*left: 5px;*/
+                background: white;
+                
+                /*animation-name: fall;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;*/
+
+            }
+
+            #one { left: 25px; animation: fall 5s infinite; }      #five { left: 280px; animation: fall 5.6s infinite; }      #nine { left: 1780px; animation: fall 6.01s infinite; }
+
+            #two { left: 250px; animation: fall 6.7s infinite; }   #six { left: 720px; animation: fall 3.9s infinite; }       #ten { left: 1500px; animation: fall 6s infinite; }
+
+            #three { left: 120px; animation: fall 8s infinite; }   #seven { left: 1000px; animation: fall 7.08s infinite; }   #eleven { left: 1250px; animation: fall 5.9s infinite; }
+
+            #four { left: 530px; animation: fall 4.4s infinite; }  #eight { left: 1080px; animation: fall 9s infinite; }      #twelve { left: 1680px; animation: fall 4.56s infinite; }
+
+            .speech-bubble {
+                
+                background-color: white;
+                border-radius: 50%;
+                
+                text-align: center;
+                padding: 20px;
+                
+                width: 110px;
+                height: 50px;
+
+                position: absolute;
+                left: 25%;
+                top: 60%;
+                transform: translate(-50%,-50%);
+
+                border: 5px black solid;
+            
+            }
+
+            .speech-bubble:hover {text-decoration: underline;}
+
+            .small-bubble {
+
+                background-color: white;
+                border-radius: 50%;
+                
+                text-align: center;
+                padding: 20px;
+                
+                width: 25.5px;
+                height: 12.5px;
+
+                position: absolute;
+                left: 17.5%;
+                top: 65%;
+                transform: translate(-50%,-50%);
+
+                border: 5px black solid;
+
+            }
+
+            .message {
+
+                display: none;
+               
+                width: 500px;
+                height: 740px;
+
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+
+                z-index: 1000;
+
+                background: #f9f9f9;
+
+                border: 2px solid grey;
+                border-radius: 5px;
+
+                padding: 0px;
+
+            }
+
+            .message-text {
+
+                margin-left: 20px;
+                margin-top: 20px;
+                font-weight: 400;
+
+            }
+
+            .message-title {
+
+                font-weight: 400;
+                font-size: 40px;
+
+            }
+
+            .message-body {
+
+                margin-right: 20px;
+                text-align: justify;
+                text-justify: auto;
+
+            }
+
+            h3 {text-decoration: underline;}
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="ground-container">
+
+            <div class="ground"></div>
+
+        </div>
+
+        <img  class="face" src="face.png" alt="face" width="200" height="280">
+        
+        <img class="moon" src="moon.png" alt="moon">
+
+        <div class="snow" id="one"></div>
+        <div class="snow" id="two"></div>
+        <div class="snow" id="three"></div>
+        <div class="snow" id="four"></div>
+        <div class="snow" id="five"></div>
+        <div class="snow" id="six"></div>
+        <div class="snow" id="seven"></div>
+        <div class="snow" id="eight"></div>
+        <div class="snow" id="nine"></div>
+        <div class="snow" id="ten"></div>
+        <div class="snow" id="eleven"></div>
+        <div class="snow" id="twelve"></div>
+
+        <div class="speech-bubble">
+
+            <p style="margin-top:5px;">Click Me for Message!</p>
+
+        </div>
+        
+        <div class="small-bubble"></div>
+
+        <div class="message">
+
+            <h2 class="message-title message-text">Dear Mummy,</h2>
+
+            <p class="message-body message-text">
+
+                I just want to wish you a merry christmas in this terrible year which is why I (badly) made this card and say thank you for being the <u>best</u> Mum I could wish for!
+
+            </p>
+
+            <h3 class="message-body message-text">Some things worth celebrating:</h3>
+            
+            <ul>
+                
+                <li class="message-text">
+
+                    <p>
+                        
+                        <h4 class="message-body message-text">New Job: </h4>
+                        
+                        <p class="message-body message-text">I'm glad you finally found a job that you enjoy enough to maybe keep for more than your current record, which is around two years!</p>
+                    
+                    </p>
+
+                </li>
+
+                <li class="message-text">
+
+                    <p>
+                        
+                        <h4 class="message-body message-text">Walking Cotswold Way: </h4>
+                        
+                        <p class="message-body message-text">I'm also happy that you have found something that you enjoy doing, and that it is for a good cause as well; good job!</p>
+                    
+                    </p>
+
+                </li>
+
+                <li class="message-text">
+
+                    <p>
+                        
+                        <h4 class="message-body message-text">Getting us through Lockdown: </h4>
+                        
+                        <p class="message-body message-text">Lockdown was a struggle for all of us, especially seeing each other too often! But in all seriousness I'm glad that we all got through it ok, even with all of us working from home.</p>
+                    
+                    </p>
+
+                </li>
+            
+            </ul>
+
+            <p class="message-body message-text">
+
+                Hopefully next year is much better!<br><br>Merry Christmas.
+
+            </p>
+
+            <h2 class="message-body message-text" style="margin-top: 50px;">Love from: Jack</h2>
+
+        </div>
+
+        <script type="text/javascript">
+        
+            $(".speech-bubble").click(function() {
+
+                $(".speech-bubble").fadeOut();
+                $(".small-bubble").fadeOut();
+                
+                $(".message").animate({height: "toggle"});
+
+            });
+
+        </script>
+
+    </body>
+
+</html>
